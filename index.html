@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATHANDWE LOANS</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f4f7fb;
+  color:#222;
+}
+header{
+  background:#0b5ed7;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+header h1{margin:0;font-size:27px}
+header p{margin:7px 0 0}
+
+.container{
+  max-width:600px;
+  margin:auto;
+  padding:18px;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  margin-bottom:18px;
+  border-radius:12px;
+  box-shadow:0 2px 10px #00000015;
+}
+
+h2{color:#0b5ed7;margin-top:0}
+
+input,select,textarea{
+  width:100%;
+  padding:13px;
+  margin:7px 0 13px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  margin:6px 0;
+  border:0;
+  border-radius:8px;
+  background:#0b5ed7;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+}
+
+button.secondary{
+  background:#e9f0ff;
+  color:#0b5ed7;
+}
+
+button.danger{background:#dc3545}
+
+nav{
+  background:white;
+  padding:10px;
+  box-shadow:0 2px 8px #00000012;
+}
+
+nav button{
+  width:auto;
+  padding:9px 12px;
+  font-size:14px;
+  margin:3px;
+}
+
+.hidden{display:none!important}
+
+.small{
+  font-size:13px;
+  color:#666;
+}
+
+.success{
+  background:#e8f7ed;
+  padding:12px;
+  border-radius:8px;
+  color:#176b35;
+}
+
+.notice{
+  background:#fff8df;
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:15px;
+}
+
+label{
+  font-weight:bold;
+  display:block;
+  margin-top:5px;
+}
+
+.stat{
+  display:inline-block;
+  width:48%;
+  background:#eef4ff;
+  padding:15px;
+  margin:1%;
+  border-radius:10px;
+  text-align:center;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>ATHANDWE LOANS</h1>
+  <p>Simple • Convenient • Personal</p>
+</header>
+
+<!-- CUSTOMER LOGIN -->
+<section id="loginPage" class="container">
+  <div class="card">
+    <h2>Customer Login</h2>
+
+    <div class="notice">
+      Returning customer? Enter your cellphone number and PIN.
+    </div>
+
+    <label>Cellphone Number</label>
+    <input id="loginPhone" type="tel" placeholder="e.g. 0712345678">
+
+    <label>4-Digit PIN</label>
+    <input id="loginPin" type="password" inputmode="numeric"
+           maxlength="4" placeholder="Enter PIN">
+
+    <button onclick="loginCustomer()">LOGIN</button>
+
+    <button class="secondary" onclick="showPage('createPage')">
+      CREATE PROFILE
+    </button>
+
+    <button class="secondary" onclick="showPage('forgotPage')">
+      FORGOT PIN?
+    </button>
+  </div>
+</section>
+
+<!-- CREATE PROFILE -->
+<section id="createPage" class="container hidden">
+  <div class="card">
+    <h2>Create Your Profile</h2>
+
+    <p class="small">
+      You only need to create your profile once. Your information can then
+      be used for future applications.
+    </p>
+
+    <label>Full Name & Surname</label>
+    <input id="name" type="text">
+
+    <label>ID Number</label>
+    <input id="idNumber" type="text">
+
+    <label>Date of Birth</label>
+    <input id="dob" type="date">
+
+    <label>Cellphone Number</label>
+    <input id="phone" type="tel">
+
+    <label>Email Address</label>
+    <input id="email" type="email">
+
+    <label>Residential Address</label>
+    <textarea id="address"></textarea>
+
+    <label>Number of Dependants</label>
+    <input id="dependants" type="number" min="0">
+
+    <label>Employment Status</label>
+    <select id="employment">
+      <option value="">Select</option>
+      <option>Permanent</option>
+      <option>Part-time</option>
+    </select>
+
+    <label>Employer / Business Name</label>
+    <input id="employer" type="text">
+
+    <label>Job Title</label>
+    <input id="jobTitle" type="text">
+
+    <label>Length of Employment</label>
+    <input id="employmentLength" type="text"
+           placeholder="e.g. 2 years">
+
+    <label>Monthly Income</label>
+    <input id="income" type="number">
+
+    <label>Other Monthly Income</label>
+    <input id="otherIncome" type="number">
+
+    <label>Monthly Expenses</label>
+    <input id="expenses" type="number">
+
+    <label>Other Loan Repayments</label>
+    <input id="otherLoans" type="number">
+
+    <label>Bank Name</label>
+    <input id="bank" type="text">
+
+    <label>Account Holder Name</label>
+    <input id="accountHolder" type="text">
+
+    <label>Account Type</label>
+    <select id="accountType">
+      <option value="">Select</option>
+      <option>Cheque</option>
+      <option>Savings</option>
+      <option>Transmission</option>
+    </select>
+
+    <label>Account Number</label>
+    <input id="accountNumber" type="text">
+
+    <label>Proof of Income OR Bank Statement</label>
+    <input id="document" type="file"
+           accept=".pdf,.jpg,.jpeg,.png">
+
+    <label>Create 4-Digit PIN</label>
+    <input id="newPin" type="password"
+           inputmode="numeric" maxlength="4">
+
+    <label>Confirm PIN</label>
+    <input id="confirmPin" type="password"
+           inputmode="numeric" maxlength="4">
+
+    <button onclick="createProfile()">CREATE PROFILE</button>
+
+    <button class="secondary" onclick="showPage('loginPage')">
+      BACK TO LOGIN
+    </button>
+  </div>
+</section>
+
+<!-- FORGOT PIN -->
+<section id="forgotPage" class="container hidden">
+  <div class="card">
+    <h2>Forgot PIN?</h2>
+
+    <p>
+      Enter your cellphone number or email address. We will use the
+      registered contact details to verify your account and reset your PIN.
+    </p>
+
+    <label>Cellphone Number</label>
+    <input id="forgotPhone" type="tel">
+
+    <label>Email Address</label>
+    <input id="forgotEmail" type="email">
+
+    <button onclick="forgotPin()">CONTINUE</button>
+
+    <button class="secondary" onclick="showPage('loginPage')">
+      BACK TO LOGIN
+    </button>
+  </div>
+</section>
+
+<!-- CUSTOMER DASHBOARD -->
+<section id="dashboard" class="hidden">
+
+<nav>
+  <div class="container">
+    <button onclick="showPage('dashboard')">Home</button>
+    <button onclick="showPage('loanPage')">Apply</button>
+    <button onclick="showPage('calculatorPage')">Calculator</button>
+    <button onclick="showPage('topupPage')">Top Up</button>
+    <button onclick="showPage('profilePage')">My Profile</button>
+    <button onclick="showPage('termsPage')">Terms</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="card">
+    <h2>Welcome to ATHANDWE LOANS</h2>
+    <p id="welcomeName"></p>
+
+    <button onclick="showPage('loanPage')">
+      📝 APPLY FOR LOAN
+    </button>
+
+    <button onclick="showPage('calculatorPage')">
+      🧮 LOAN CALCULATOR
+    </button>
+
+    <button onclick="showPage('topupPage')">
+      💰 TOP UP LOAN
+    </button>
+
+    <button onclick="showPage('profilePage')">
+      👤 MY PROFILE
+    </button>
+  </div>
+</div>
+</section>
+
+<!-- APPLY FOR LOAN -->
+<section id="loanPage" class="container hidden">
+  <div class="card">
+    <h2>Apply for a Loan</h2>
+
+    <p class="small">
+      Your saved profile information will be used automatically.
+    </p>
+
+    <label>Loan Amount</label>
+    <input id="loanAmount" type="number" placeholder="Enter amount">
+
+    <label>Loan Term</label>
+    <select id="loanTerm">
+      <option value="1">1 Month</option>
+      <option value="2">2 Months</option>
+      <option value="3">3 Months</option>
+      <option value="6">6 Months</option>
+      <option value="12">12 Months</option>
+    </select>
+
+    <label>Proof of Income OR Bank Statement</label>
+    <input type="file" accept=".pdf,.jpg,.jpeg,.png">
+
+    <button onclick="submitLoan()">SUBMIT LOAN APPLICATION</button>
+
+    <button class="secondary" onclick="showPage('dashboard')">
+      BACK
+    </button>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section id="calculatorPage" class="container hidden">
+  <div class="card">
+    <h2>Loan Calculator</h2>
+
+    <label>Loan Amount</label>
+    <input id="calcAmount" type="number">
+
+    <label>Interest %</label>
+    <input id="calcInterest" type="number" value="10">
+
+    <label>Initiation Fee</label>
+    <input id="calcInitiation" type="number" value="0">
+
+    <label>Service Fee</label>
+    <input id="calcService" type="number" value="0">
+
+    <label>Number of Months</label>
+    <input id="calcMonths" type="number" value="3">
+
+    <button onclick="calculateLoan()">CALCULATE</button>
+
+    <div id="calcResult"></div>
+
+    <button class="secondary" onclick="showPage('dashboard')">
+      BACK
+    </button>
+  </div>
+</section>
+
+<!-- TOP UP -->
+<section id="topupPage" class="container hidden">
+  <div class="card">
+    <h2>Top Up Loan</h2>
+
+    <p>
+      Existing customers can request a top-up. The request will be
+      reviewed through the Admin Portal.
+    </p>
+
+    <label>Top-Up Amount Requested</label>
+    <input id="topupAmount" type="number">
+
+    <button onclick="submitTopup()">SUBMIT TOP-UP REQUEST</button>
+
+    <button class="secondary" onclick="showPage('dashboard')">
+      BACK
+    </button>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<section id="profilePage" class="container hidden">
+  <div class="card">
+    <h2>My Profile</h2>
+    <div id="profileDetails"></div>
+
+    <button class="secondary" onclick="showPage('dashboard')">
+      BACK
+    </button>
+  </div>
+</section>
+
+<!-- TERMS -->
+<section id="termsPage" class="container hidden">
+  <div class="card">
+    <h2>Terms & Conditions</h2>
+
+    <p><b>1. Loan Application</b></p>
+    <p>
+      Customers must provide accurate and complete information.
+      Submitting an application does not guarantee approval.
+    </p>
+
+    <p><b>2. Customer Profile</b></p>
+    <p>
+      Customers create one profile and must keep their information
+      accurate and updated.
+    </p>
+
+    <p><b>3. Supporting Documents</b></p>
+    <p>
+      ATHANDWE LOANS may request proof of income or a bank statement.
+    </p>
+
+    <p><b>4. Interest and Fees</b></p>
+    <p>
+      Applicable interest and fees will be disclosed before a customer
+      accepts a loan.
+    </p>
+
+    <p><b>5. Repayment</b></p>
+    <p>
+      Customers must make repayments according to the agreed repayment
+      schedule.
+    </p>
+
+    <p><b>6. Top-Up</b></p>
+    <p>
+      A top-up request is subject to approval.
+    </p>
+
+    <p><b>7. Personal Information</b></p>
+    <p>
+      Customer information will be handled according to applicable
+      privacy and data-protection requirements.
+    </p>
+
+    <p><b>8. Acceptance</b></p>
+    <p>
+      By submitting an application, the customer confirms that the
+      information supplied is accurate and accepts the applicable
+      terms.
+    </p>
+
+    <button class="secondary" onclick="showPage('dashboard')">
+      BACK
+    </button>
+  </div>
+</section>
+
+<!-- ADMIN PORTAL -->
+<section id="adminPage" class="container hidden">
+  <div class="card">
+    <h2>ATHANDWE LOANS — ADMIN</h2>
+
+    <div class="stat">
+      <b id="applicationCount">0</b><br>
+      Applications
+    </div>
+
+    <div class="stat">
+      <b id="topupCount">0</b><br>
+      Top Ups
+    </div>
+
+    <hr>
+
+    <h3>Loan Settings</h3>
+
+    <label>Interest %</label>
+    <input id="adminInterest" type="number" value="10">
+
+    <label>Initiation Fee</label>
+    <input id="adminInitiation" type="number" value="0">
+
+    <label>Service Fee</label>
+    <input id="adminService" type="number" value="0">
+
+    <button onclick="saveSettings()">SAVE SETTINGS</button>
+
+    <h3>Applications</h3>
+    <div id="applicationsList">
+      No applications yet.
+    </div>
+
+    <button class="danger" onclick="adminLogout()">
+      ADMIN LOGOUT
+    </button>
+  </div>
+</section>
+
+<footer>
+  ATHANDWE LOANS<br>
+  © 2026
+</footer>
+
+<script>
+
+let currentCustomer =
+  JSON.parse(localStorage.getItem("athandweCustomer") || "null");
+
+let applications =
+  JSON.parse(localStorage.getItem("athandweApplications") || "[]");
+
+let topups =
+  JSON.parse(localStorage.getItem("athandweTopups") || "[]");
+
+function showPage(id){
+  document.querySelectorAll("section").forEach(function(section){
+    section.classList.add("hidden");
+  });
+
+  const page=document.getElementById(id);
+
+  if(page){
+    page.classList.remove("hidden");
+    window.scrollTo(0,0);
+  }
+}
+
+function createProfile(){
+
+  const pin=document.getElementById("newPin").value;
+  const confirm=document.getElementById("confirmPin").value;
+
+  if(pin.length!==4 || !/^[0-9]+$/.test(pin)){
+    alert("Please create a 4-digit PIN.");
+    return;
+  }
+
+  if(pin!==confirm){
+    alert("PINs do not match.");
+    return;
+  }
+
+  const customer={
+    name:document.getElementById("name").value,
+    idNumber:document.getElementById("idNumber").value,
+    dob:document.getElementById("dob").value,
+    phone:document.getElementById("phone").value,
+    email:document.getElementById("email").value,
+    address:document.getElementById("address").value,
+    dependants:document.getElementById("dependants").value,
+    employment:document.getElementById("employment").value,
+    employer:document.getElementById("employer").value,
+    jobTitle:document.getElementById("jobTitle").value,
+    employmentLength:document.getElementById("employmentLength").value,
+    income:document.getElementById("income").value,
+    otherIncome:document.getElementById("otherIncome").value,
+    expenses:document.getElementById("expenses").value,
+    otherLoans:document.getElementById("otherLoans").value,
+    bank:document.getElementById("bank").value,
+    accountHolder:document.getElementById("accountHolder").value,
+    accountType:document.getElementById("accountType").value,
+    accountNumber:document.getElementById("accountNumber").value,
+    pin:pin
+  };
+
+  localStorage.setItem(
+    "athandweCustomer",
+    JSON.stringify(customer)
+  );
+
+  currentCustomer=customer;
+
+  alert("Profile created successfully!");
+  openDashboard();
+}
+
+function loginCustomer(){
+
+  const phone=document.getElementById("loginPhone").value;
+  const pin=document.getElementById("loginPin").value;
+
+  const customer=
+    JSON.parse(localStorage.getItem("athandweCustomer") || "null");
+
+  if(!customer){
+    alert("No profile found. Please create your profile first.");
+    return;
+  }
+
+  if(customer.phone===phone && customer.pin===pin){
+    currentCustomer=customer;
+    openDashboard();
+  }else{
+    alert("Incorrect cellphone number or PIN.");
+  }
+}
+
+function openDashboard(){
+
+  if(!currentCustomer)return;
+
+  document.getElementById("welcomeName").innerText=
+    "Welcome, "+currentCustomer.name;
+
+  showPage("dashboard");
+}
+
+function logout(){
+  currentCustomer=null;
+  showPage("loginPage");
+}
+
+function forgotPin(){
+
+  alert(
+    "For the first prototype, PIN recovery will be connected to secure email/SMS verification when we connect the database."
+  );
+}
+
+function submitLoan(){
+
+  if(!currentCustomer){
+    alert("Please login first.");
+    return;
+  }
+
+  const amount=document.getElementById("loanAmount").value;
+
+  if(!amount || Number(amount)<=0){
+    alert("Please enter the loan amount.");
+    return;
+  }
+
+  const application={
+    customer:currentCustomer.name,
+    phone:currentCustomer.phone,
+    amount:amount,
+    term:document.getElementById("loanTerm").value,
+    date:new Date().toLocaleString(),
+    status:"Pending"
+  };
+
+  applications.push(application);
+
+  localStorage.setItem(
+    "athandweApplications",
+    JSON.stringify(applications)
+  );
+
+  alert("Loan application submitted successfully.");
+  showPage("dashboard");
+}
+
+function submitTopup(){
+
+  if(!currentCustomer){
+    alert("Please login first.");
+    return;
+  }
+
+  const amount=document.getElementById("topupAmount").value;
+
+  if(!amount || Number(amount)<=0){
+    alert("Please enter the top-up amount.");
+    return;
+  }
+
+  topups.push({
+    customer:currentCustomer.name,
+    phone:currentCustomer.phone,
+    amount:amount,
+    date:new Date().toLocaleString(),
+    status:"Pending"
+  });
+
+  localStorage.setItem(
+    "athandweTopups",
+    JSON.stringify(topups)
+  );
+
+  alert("Top-up request submitted.");
+  showPage("dashboard");
+}
+
+function calculateLoan(){
+
+  const amount=Number(document.getElementById("calcAmount").value);
+  const interest=Number(document.getElementById("calcInterest").value);
+  const initiation=Number(document.getElementById("calcInitiation").value);
+  const service=Number(document.getElementById("calcService").value);
+  const months=Number(document.getElementById("calcMonths").value);
+
+  if(!amount || !months){
+    alert("Please enter the loan amount and term.");
+    return;
+  }
+
+  const interestAmount=amount*(interest/100);
+  const total=amount+interestAmount+initiation+service;
+  const installment=total/months;
+
+  document.getElementById("calcResult").innerHTML=
+    "<div class='success'>"+
+    "<b>Estimated Calculation</b><br><br>"+
+    "Loan: R"+amount.toFixed(2)+"<br>"+
+    "Interest: R"+interestAmount.toFixed(2)+"<br>"+
+    "Initiation Fee: R"+initiation.toFixed(2)+"<br>"+
+    "Service Fee: R"+service.toFixed(2)+"<br>"+
+    "<b>Total: R"+total.toFixed(2)+"</b><br>"+
+    "Estimated Monthly Instalment: R"+
+    installment.toFixed(2)+
+    "</div>";
+}
+
+function saveSettings(){
+
+  const settings={
+    interest:document.getElementById("adminInterest").value,
+    initiation:document.getElementById("adminInitiation").value,
+    service:document.getElementById("adminService").value
+  };
+
+  localStorage.setItem(
+    "athandweSettings",
+    JSON.stringify(settings)
+  );
+
+  alert("Settings saved.");
+}
+
+function loadAdmin(){
+
+  document.getElementById("applicationCount").innerText=
+    applications.length;
+
+  document.getElementById("topupCount").innerText=
+    topups.length;
+
+  const list=document.getElementById("applicationsList");
+
+  if(applications.length===0){
+    list.innerText="No applications yet.";
+    return;
+  }
+
+  list.innerHTML="";
+
+  applications.forEach(function(app,index){
+
+    const div=document.createElement("div");
+    div.className="card";
+
+    div.innerHTML=
+      "<b>Application #"+(index+1)+"</b><br>"+
+      "Customer: "+app.customer+"<br>"+
+      "Phone: "+app.phone+"<br>"+
+      "Amount: R"+app.amount+"<br>"+
+      "Term: "+app.term+" months<br>"+
+      "Date: "+app.date+"<br>"+
+      "Status: "+app.status;
+
+    list.appendChild(div);
+  });
+}
+
+function adminLogout(){
+  showPage("loginPage");
+}
+
+</script>
+
+</body>
+</html>
