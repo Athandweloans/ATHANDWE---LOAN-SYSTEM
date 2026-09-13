@@ -2,56 +2,426 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ATHANDWE LOANS</title>
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f4f8fb;color:#122b4a}
-header{background:white;padding:15px 5%;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
-.logo{font-size:28px;font-weight:bold;color:#063d70}
-.logo span{color:#159447}
-.tagline{font-size:14px;color:#555}
-.help{background:#159447;color:white;padding:12px 18px;border-radius:10px;font-weight:bold}
-nav{background:#063d70;display:flex;overflow-x:auto}
-nav button{background:none;border:0;color:white;padding:15px 18px;white-space:nowrap;font-size:15px;cursor:pointer}
-nav button:hover,nav button.active{background:#159447}
-.container{max-width:1100px;margin:auto;padding:20px}
-.hero{background:linear-gradient(120deg,#eaf5ff,#fff);padding:45px 25px;border-radius:0 0 18px 18px}
-.hero h1{font-size:42px;margin:0 0 10px}
-.hero h1 span{color:#159447}
-.hero p{font-size:19px;line-height:1.5}
-.btn{border:0;border-radius:8px;padding:13px 20px;font-size:16px;font-weight:bold;cursor:pointer;background:#159447;color:white;margin:5px}
-.btn.blue{background:#063d70}
-.btn.red{background:#c62828}
-.btn.whatsapp{background:#159447}
-.card{background:white;border-radius:12px;padding:22px;margin:18px 0;box-shadow:0 2px 10px #00000012}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px}
-.feature{text-align:center;border:1px solid #e1edf5}
-.feature .icon{font-size:38px}
-h2{color:#063d70}
-label{display:block;font-weight:bold;margin-top:13px}
-input,select,textarea{width:100%;padding:12px;margin-top:6px;border:1px solid #b9c9d6;border-radius:7px;font-size:15px}
-textarea{min-height:90px}
-.required{color:#c62828}
-.error{border:2px solid #c62828!important;background:#fff5f5}
-.message{padding:12px;border-radius:7px;margin:12px 0;display:none}
-.success{background:#e7f7ed;color:#126b35}
-.danger{background:#fdeaea;color:#9d1c1c}
-.info{background:#eaf4ff;color:#174c7c}
-.status{padding:10px;border-radius:7px;background:#fff3cd;color:#765800}
-.requirements{background:#e4f4ff}
-footer{background:#062f50;color:white;margin-top:30px;padding:35px 5%}
-footer a{color:white}
-.small{font-size:13px;color:#666}
-.hidden{display:none!important}
-.amount{font-size:30px;font-weight:bold;color:#159447}
-.terms{line-height:1.6}
-@media(max-width:600px){
-.logo{font-size:22px}
-.hero h1{font-size:32px}
-.container{padding:12px}
-nav button{padding:13px 12px;font-size:13px}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#f2f3f5;
+color:#20252b;
+}
+
+:root{
+--red:#e30613;
+--dark:#3f4247;
+--light:#f1f2f4;
+--white:#fff;
+}
+
+header{
+background:white;
+padding:15px 4%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+flex-wrap:wrap;
+border-bottom:1px solid #ddd;
+}
+
+.logo{
+font-size:30px;
+font-weight:800;
+color:var(--red);
+}
+
+.logo span{
+color:var(--dark);
+}
+
+.tagline{
+font-size:15px;
+color:#555;
+margin-top:3px;
+}
+
+.help{
+background:var(--red);
+color:white;
+padding:11px 18px;
+border-radius:10px;
+font-weight:bold;
+text-align:center;
+}
+
+.help a{
+color:white;
+text-decoration:none;
+}
+
+nav{
+background:var(--dark);
+display:flex;
+align-items:stretch;
+overflow-x:auto;
+}
+
+nav button{
+flex:1;
+min-width:115px;
+border:0;
+background:var(--dark);
+color:white;
+padding:14px 10px;
+font-size:14px;
+font-weight:bold;
+cursor:pointer;
+}
+
+nav button:hover,
+nav button.active{
+background:var(--red);
+}
+
+.moreBtn{
+display:none;
+}
+
+.container{
+max-width:1150px;
+margin:auto;
+padding:20px;
+}
+
+.hero{
+min-height:430px;
+padding:55px 5%;
+background:
+linear-gradient(120deg,#f7f8f9 0%,#e9eaec 60%,#d7d9dc 100%);
+position:relative;
+overflow:hidden;
+}
+
+.hero:after{
+content:"";
+position:absolute;
+right:-100px;
+top:0;
+width:45%;
+height:100%;
+background:linear-gradient(135deg,transparent 40%,#e30613 41%,#e30613 48%,#3f4247 49%,#3f4247 53%,transparent 54%);
+opacity:.9;
+}
+
+.heroContent{
+position:relative;
+z-index:2;
+max-width:650px;
+}
+
+.hero h1{
+font-size:52px;
+line-height:1.05;
+margin:0 0 12px;
+color:#182431;
+}
+
+.hero h1 span{
+color:var(--red);
+}
+
+.hero p{
+font-size:21px;
+line-height:1.5;
+}
+
+.btn{
+display:inline-block;
+border:0;
+border-radius:9px;
+padding:14px 24px;
+margin:6px 4px;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+text-decoration:none;
+}
+
+.btn.red{
+background:var(--red);
+color:white;
+}
+
+.btn.gray{
+background:var(--dark);
+color:white;
+}
+
+.btn.white{
+background:white;
+color:var(--dark);
+border:1px solid #ccc;
+}
+
+.whatsapp{
+background:var(--dark);
+color:white;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px;
+}
+
+.card{
+background:white;
+border-radius:13px;
+padding:22px;
+margin:18px 0;
+box-shadow:0 2px 10px #00000012;
+}
+
+.feature{
+text-align:center;
+min-height:260px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
+
+.icon{
+font-size:44px;
+margin-bottom:10px;
+}
+
+.feature h2{
+font-size:22px;
+margin:5px 0;
+color:#182431;
+}
+
+.feature p{
+font-size:16px;
+line-height:1.4;
+}
+
+.feature .btn{
+width:90%;
+margin:10px auto 0;
+}
+
+h2{
+color:var(--dark);
+}
+
+label{
+display:block;
+font-weight:bold;
+margin-top:14px;
+}
+
+.required{
+color:var(--red);
+}
+
+input,
+select,
+textarea{
+width:100%;
+padding:12px;
+margin-top:6px;
+border:1px solid #bfc3c7;
+border-radius:7px;
+font-size:16px;
+background:white;
+}
+
+textarea{
+min-height:90px;
+resize:vertical;
+}
+
+.error{
+border:2px solid var(--red)!important;
+background:#fff2f2!important;
+}
+
+.message{
+display:none;
+padding:13px;
+border-radius:8px;
+margin:12px 0;
+font-weight:bold;
+}
+
+.success{
+background:#e4f5e8;
+color:#17652c;
+}
+
+.danger{
+background:#ffe5e5;
+color:#9c1018;
+}
+
+.info{
+background:#eceef0;
+color:#333;
+}
+
+.requirements{
+background:#e1e3e6;
+}
+
+.requirement{
+text-align:center;
+padding:12px;
+}
+
+.requirement .icon{
+font-size:35px;
+}
+
+.amount{
+font-size:30px;
+font-weight:bold;
+color:var(--red);
+}
+
+.hidden{
+display:none!important;
+}
+
+.small{
+font-size:13px;
+color:#666;
+line-height:1.5;
+}
+
+.terms{
+line-height:1.6;
+}
+
+footer{
+background:#303338;
+color:white;
+padding:35px 5%;
+margin-top:30px;
+}
+
+footer h2{
+color:white;
+}
+
+footer a{
+color:white;
+}
+
+footer hr{
+border:0;
+border-top:1px solid #666;
+margin-top:25px;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+header{
+padding:14px;
+}
+
+.logo{
+font-size:24px;
+}
+
+.tagline{
+font-size:13px;
+}
+
+.help{
+width:100%;
+font-size:15px;
+}
+
+nav{
+position:relative;
+overflow:visible;
+}
+
+nav button{
+display:none;
+min-width:0;
+}
+
+nav button:nth-child(1),
+nav button:nth-child(2),
+nav button:nth-child(3){
+display:block;
+}
+
+nav .moreBtn{
+display:block;
+background:var(--dark);
+}
+
+.hero{
+padding:35px 20px;
+min-height:420px;
+}
+
+.hero h1{
+font-size:38px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.hero:after{
+right:-180px;
+width:65%;
+opacity:.55;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.container{
+padding:12px;
+}
+
+.card{
+padding:18px;
+}
+
+.btn{
+width:auto;
+font-size:16px;
+}
+
+.hero .btn{
+width:100%;
+margin:6px 0;
+}
+
+}
+
+@media(min-width:701px){
+
+nav button{
+display:block!important;
+}
+
+.moreBtn{
+display:none!important;
+}
+
 }
 </style>
 </head>
@@ -59,6 +429,7 @@ nav button{padding:13px 12px;font-size:13px}
 <body>
 
 <header>
+
 <div>
 <div class="logo">ATHANDWE <span>LOANS</span></div>
 <div class="tagline">Simple • Convenient • Reliable</div>
@@ -66,157 +437,345 @@ nav button{padding:13px 12px;font-size:13px}
 
 <div class="help">
 💬 Need Help? WhatsApp<br>
-<a id="helpNumber" style="color:white;text-decoration:none"></a>
+<a id="helpNumber"></a>
 </div>
+
 </header>
 
 <nav>
-<button onclick="showPage('home')" class="active">🏠 Home</button>
-<button onclick="showPage('profile')">👤 Create Profile</button>
-<button onclick="showPage('loan')">📄 Apply for Loan</button>
-<button onclick="showPage('calculator')">🧮 Calculator</button>
-<button onclick="showPage('status')">🔎 Check Status</button>
-<button onclick="showPage('topup')">➕ Top Up</button>
-<button onclick="showPage('terms')">📜 Terms</button>
+
+<button onclick="showPage('home')">🏠<br>Home</button>
+
+<button onclick="showPage('profile')">👤<br>Create Profile</button>
+
+<button onclick="showPage('loan')">📄<br>Apply for Loan</button>
+
+<button onclick="showPage('calculator')">🧮<br>Calculator</button>
+
+<button onclick="showPage('status')">🔎<br>Check Status</button>
+
+<button onclick="showPage('topup')">➕<br>Top Up</button>
+
+<button onclick="showPage('terms')">📜<br>Terms</button>
+
+<button class="moreBtn" onclick="toggleMenu()">☰<br>More</button>
+
 </nav>
+
+<div id="mobileMenu" class="hidden"
+style="background:#303338;text-align:center;">
+
+<button class="btn gray" onclick="showPage('calculator')">🧮 Calculator</button>
+<button class="btn gray" onclick="showPage('status')">🔎 Check Status</button>
+<button class="btn gray" onclick="showPage('topup')">➕ Top Up</button>
+<button class="btn gray" onclick="showPage('terms')">📜 Terms</button>
+
+</div>
+
 
 <main>
 
 <!-- HOME -->
+
 <section id="home" class="page">
+
 <div class="hero">
-<h1>Welcome to<br>ATHANDWE <span>LOANS</span></h1>
-<p>Simple • Convenient • Reliable</p>
-<p>Apply for a loan online, anytime, anywhere.</p>
-<button class="btn" onclick="showPage('profile')">Get Started →</button>
-<a id="whatsappTop" class="btn whatsapp" target="_blank">💬 WhatsApp Us</a>
+
+<div class="heroContent">
+
+<h1>
+Welcome to<br>
+<span>ATHANDWE</span> LOANS
+</h1>
+
+<p><b>Simple • Convenient • Reliable</b></p>
+
+<p>
+Apply for a loan online, anytime, anywhere.
+</p>
+
+<button class="btn red" onclick="showPage('profile')">
+Get Started →
+</button>
+
+<a id="whatsappTop"
+class="btn whatsapp"
+target="_blank">
+💬 WhatsApp Us
+</a>
+
 </div>
 
+</div>
+
+
 <div class="container">
+
 <div class="grid">
+
 <div class="card feature">
+
+<div>
 <div class="icon">👤</div>
 <h2>Create Profile</h2>
 <p>Register your personal details to get started.</p>
-<button class="btn blue" onclick="showPage('profile')">Create Profile</button>
 </div>
 
+<button class="btn red"
+onclick="showPage('profile')">
+Create Profile
+</button>
+
+</div>
+
+
 <div class="card feature">
+
+<div>
 <div class="icon">📄</div>
 <h2>Apply for a Loan</h2>
 <p>Complete your application and upload required documents.</p>
-<button class="btn" onclick="showPage('loan')">Apply Now</button>
 </div>
 
+<button class="btn gray"
+onclick="showPage('loan')">
+Apply Now
+</button>
+
+</div>
+
+
 <div class="card feature">
+
+<div>
 <div class="icon">🧮</div>
 <h2>Loan Calculator</h2>
 <p>Calculate your estimated repayment.</p>
-<button class="btn blue" onclick="showPage('calculator')">Calculate</button>
 </div>
 
+<button class="btn red"
+onclick="showPage('calculator')">
+Calculate
+</button>
+
+</div>
+
+
 <div class="card feature">
+
+<div>
 <div class="icon">🔎</div>
 <h2>Check Status</h2>
 <p>Check the progress of your application.</p>
-<button class="btn" onclick="showPage('status')">Check Status</button>
 </div>
 
+<button class="btn gray"
+onclick="showPage('status')">
+Check Status
+</button>
+
+</div>
+
+
 <div class="card feature">
+
+<div>
 <div class="icon">➕</div>
 <h2>Top Up</h2>
 <p>Request an additional amount on an existing loan.</p>
-<button class="btn blue" onclick="showPage('topup')">Top Up</button>
 </div>
 
+<button class="btn red"
+onclick="showPage('topup')">
+Top Up
+</button>
+
+</div>
+
+
 <div class="card feature">
+
+<div>
 <div class="icon">📜</div>
 <h2>Terms & Conditions</h2>
 <p>Read our terms before applying.</p>
-<button class="btn" onclick="showPage('terms')">View Terms</button>
-</div>
 </div>
 
+<button class="btn gray"
+onclick="showPage('terms')">
+View Terms
+</button>
+
+</div>
+
+</div>
+
+
 <div class="card requirements">
+
 <h2>Loan Application Requirements</h2>
+
 <div class="grid">
-<div>🪪<br><b>Valid South African ID</b></div>
-<div>📑<br><b>Latest Payslip</b><br><span class="small">If employed</span></div>
-<div>🏦<br><b>3-Month Bank Statement</b><br><span class="small">Compulsory</span></div>
-<div>🏠<br><b>Proof of Residential Address</b></div>
-<div>📄<br><b>Other Supporting Documents</b></div>
+
+<div class="requirement">
+<div class="icon">🪪</div>
+<b>Valid South African ID</b>
 </div>
+
+<div class="requirement">
+<div class="icon">📄</div>
+<b>Latest Payslip</b><br>
+<span class="small">If employed</span>
 </div>
+
+<div class="requirement">
+<div class="icon">🏦</div>
+<b>3-Month Bank Statement</b><br>
+<span class="small">Compulsory</span>
 </div>
+
+<div class="requirement">
+<div class="icon">🏠</div>
+<b>Proof of Residential Address</b>
+</div>
+
+<div class="requirement">
+<div class="icon">📑</div>
+<b>Supporting Documents</b>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
 
-<!-- PROFILE -->
+<!-- CREATE PROFILE -->
+
 <section id="profile" class="page hidden">
+
 <div class="container">
+
 <div class="card">
+
 <h2>👤 Create Your Profile</h2>
-<p>Complete all required information before submitting your profile.</p>
+
+<p>
+Complete all required information before submitting.
+</p>
 
 <div id="profileMsg" class="message"></div>
 
-<label>Full Name & Surname <span class="required">*</span></label>
+<label>
+Full Name & Surname <span class="required">*</span>
+</label>
 <input id="name">
 
-<label>South African ID Number <span class="required">*</span></label>
+<label>
+South African ID Number <span class="required">*</span>
+</label>
 <input id="id" inputmode="numeric" maxlength="13">
 
-<label>Date of Birth <span class="required">*</span></label>
+<label>
+Date of Birth <span class="required">*</span>
+</label>
 <input id="dob" type="date">
 
-<label>Cellphone Number <span class="required">*</span></label>
+<label>
+Cellphone Number <span class="required">*</span>
+</label>
 <input id="phone" inputmode="tel">
 
-<label>Email Address <span class="required">*</span></label>
-<input id="email" type="email" placeholder="example@mail.com">
+<label>
+Email Address <span class="required">*</span>
+</label>
+<input id="email" type="email"
+placeholder="example@mail.com">
 
-<label>Residential Address <span class="required">*</span></label>
-<textarea id="address" placeholder="Enter your complete residential address"></textarea>
+<label>
+Residential Address <span class="required">*</span>
+</label>
+<textarea id="address"
+placeholder="Enter your complete residential address"></textarea>
 
-<button class="btn" onclick="createProfile()">Create Profile</button>
+<button class="btn red" onclick="createProfile()">
+Create Profile
+</button>
+
 </div>
+
 </div>
+
 </section>
 
 
-<!-- LOAN -->
+<!-- LOAN APPLICATION -->
+
 <section id="loan" class="page hidden">
+
 <div class="container">
+
 <div class="card">
-<h2>📄 Loan Application</h2>
-<p>Bank information is collected here as part of the loan application.</p>
+
+<h2>📄 Apply for a Loan</h2>
+
+<p>
+Bank details are collected here as part of the loan application.
+</p>
 
 <div id="loanMsg" class="message"></div>
 
-<label>Loan Amount (R) <span class="required">*</span></label>
-<input id="loanAmount" type="number" min="1" placeholder="Enter amount">
+<label>
+Loan Amount (R) <span class="required">*</span>
+</label>
 
-<label>Repayment Period (months) <span class="required">*</span></label>
+<input id="loanAmount"
+type="number"
+min="1"
+placeholder="Enter amount">
+
+
+<label>
+Repayment Period <span class="required">*</span>
+</label>
+
 <select id="loanMonths">
+
 <option value="">Select period</option>
-<option value="1">1 month</option>
-<option value="2">2 months</option>
-<option value="3">3 months</option>
-<option value="6">6 months</option>
-<option value="12">12 months</option>
+<option value="1">1 Month</option>
+<option value="2">2 Months</option>
+<option value="3">3 Months</option>
+<option value="6">6 Months</option>
+<option value="12">12 Months</option>
+
 </select>
 
-<label>Employment Status <span class="required">*</span></label>
-<select id="employment" onchange="employmentChanged()">
+
+<label>
+Employment Status <span class="required">*</span>
+</label>
+
+<select id="employment"
+onchange="employmentChanged()">
+
 <option value="">Select</option>
 <option value="employed">Employed</option>
 <option value="self-employed">Self-employed</option>
 <option value="unemployed">Unemployed</option>
+
 </select>
 
-<label>Bank <span class="required">*</span></label>
+
+<label>
+Bank <span class="required">*</span>
+</label>
+
 <select id="bank">
-<option value="">Select bank</option>
+
+<option value="">Select Bank</option>
 <option>Absa</option>
 <option>Capitec</option>
 <option>FNB</option>
@@ -224,171 +783,914 @@ nav button{padding:13px 12px;font-size:13px}
 <option>Standard Bank</option>
 <option>TymeBank</option>
 <option>Other</option>
+
 </select>
 
-<label>Account Type <span class="required">*</span></label>
+
+<label>
+Account Type <span class="required">*</span>
+</label>
+
 <select id="accountType">
+
 <option value="">Select</option>
 <option>Cheque / Current</option>
 <option>Savings</option>
+
 </select>
 
-<label>Account Number <span class="required">*</span></label>
-<input id="account" inputmode="numeric">
-
-<label>3-Month Bank Statement <span class="required">*</span></label>
-<input id="statement" type="file" accept=".pdf,.jpg,.jpeg,.png">
-
-<label>Latest Payslip <span id="payslipStar" class="required">*</span></label>
-<input id="payslip" type="file" accept=".pdf,.jpg,.jpeg,.png">
-
-<label>Proof of Residential Address <span class="required">*</span></label>
-<input id="proofAddress" type="file" accept=".pdf,.jpg,.jpeg,.png">
 
 <label>
-<input id="loanAgree" type="checkbox" style="width:auto">
- I confirm that the information supplied is true and correct.
+Account Number <span class="required">*</span>
 </label>
 
-<button class="btn" onclick="submitLoan()">Submit Loan Application</button>
+<input id="account" inputmode="numeric">
+
+
+<label>
+3-Month Bank Statement <span class="required">*</span>
+</label>
+
+<input id="statement"
+type="file"
+accept=".pdf,.jpg,.jpeg,.png">
+
+
+<label>
+Latest Payslip
+<span id="payslipStar" class="required">*</span>
+</label>
+
+<input id="payslip"
+type="file"
+accept=".pdf,.jpg,.jpeg,.png">
+
+
+<label>
+Proof of Residential Address
+<span class="required">*</span>
+</label>
+
+<input id="proofAddress"
+type="file"
+accept=".pdf,.jpg,.jpeg,.png">
+
+
+<label style="font-weight:normal">
+
+<input id="loanAgree"
+type="checkbox"
+style="width:auto">
+
+I confirm that the information supplied is true and correct.
+
+</label>
+
+
+<button class="btn red"
+onclick="submitLoan()">
+Submit Loan Application
+</button>
+
 </div>
+
 </div>
+
 </section>
 
 
 <!-- CALCULATOR -->
+
 <section id="calculator" class="page hidden">
+
 <div class="container">
+
 <div class="card">
+
 <h2>🧮 Loan Calculator</h2>
 
 <label>Loan Amount (R)</label>
-<input id="calcAmount" type="number" oninput="calculate()">
+
+<input id="calcAmount"
+type="number"
+oninput="calculate()">
+
 
 <label>Number of Months</label>
-<input id="calcMonths" type="number" min="1" oninput="calculate()">
 
-<p>Interest: <b id="calcInterest">10%</b></p>
-<p>Initiation Fee: <b id="calcInit">0%</b></p>
-<p>Service Fee: <b id="calcService">0%</b></p>
+<input id="calcMonths"
+type="number"
+min="1"
+oninput="calculate()">
+
+
+<p>
+Interest:
+<b id="calcInterest">10%</b>
+</p>
+
+<p>
+Initiation Fee:
+<b id="calcInit">0%</b>
+</p>
+
+<p>
+Service Fee:
+<b id="calcService">0%</b>
+</p>
+
+<hr>
 
 <p>Estimated Total:</p>
-<div class="amount" id="calcTotal">R0.00</div>
+
+<div class="amount" id="calcTotal">
+R0.00
+</div>
 
 <p>Estimated Monthly Repayment:</p>
-<div class="amount" id="calcMonthly">R0.00</div>
 
-<p class="small">This calculator provides an estimate only. Final amounts are determined according to the approved loan agreement.</p>
+<div class="amount" id="calcMonthly">
+R0.00
 </div>
+
+<p class="small">
+This is an estimate only. Final loan amounts, fees,
+interest and repayment obligations are determined by
+the approved loan agreement.
+</p>
+
 </div>
+
+</div>
+
 </section>
 
 
 <!-- STATUS -->
+
 <section id="status" class="page hidden">
+
 <div class="container">
+
 <div class="card">
+
 <h2>🔎 Check Application Status</h2>
 
 <label>Application Reference Number</label>
-<input id="statusRef" placeholder="Example: AL-123456">
+
+<input id="statusRef"
+placeholder="Example: AL-123456">
 
 <label>Cellphone Number</label>
+
 <input id="statusPhone">
 
-<button class="btn blue" onclick="checkStatus()">Check Status</button>
+<button class="btn gray"
+onclick="checkStatus()">
+Check Status
+</button>
 
 <div id="statusResult" class="message"></div>
+
 </div>
+
 </div>
+
 </section>
 
 
 <!-- TOP UP -->
+
 <section id="topup" class="page hidden">
+
 <div class="container">
+
 <div class="card">
+
 <h2>➕ Loan Top Up</h2>
-<p>Top-up requests are available for eligible existing customers.</p>
+
+<p>
+Top-up requests are available for eligible existing customers.
+</p>
 
 <div id="topupMsg" class="message"></div>
 
-<label>Existing Loan Reference <span class="required">*</span></label>
+<label>
+Existing Loan Reference <span class="required">*</span>
+</label>
+
 <input id="topRef">
 
-<label>Cellphone Number <span class="required">*</span></label>
+<label>
+Cellphone Number <span class="required">*</span>
+</label>
+
 <input id="topPhone">
 
-<label>Requested Top-Up Amount (R) <span class="required">*</span></label>
-<input id="topAmount" type="number" min="1">
+<label>
+Requested Top-Up Amount (R)
+<span class="required">*</span>
+</label>
 
-<button class="btn" onclick="submitTopup()">Request Top Up</button>
+<input id="topAmount"
+type="number"
+min="1">
+
+<button class="btn red"
+onclick="submitTopup()">
+Request Top Up
+</button>
+
 </div>
+
 </div>
+
 </section>
 
 
 <!-- TERMS -->
+
 <section id="terms" class="page hidden">
+
 <div class="container">
+
 <div class="card terms">
-<h2>📜 ATHANDWE LOANS – Terms & Conditions</h2>
 
-<p><b>1. Application</b><br>
-Customers must provide accurate and complete information when applying for a loan.</p>
+<h2>📜 ATHANDWE LOANS</h2>
 
-<p><b>2. Verification</b><br>
-ATHANDWE LOANS may verify customer identity, income, banking information and supporting documents before making a lending decision.</p>
+<h3>Terms & Conditions</h3>
 
-<p><b>3. Documents</b><br>
-A 3-month bank statement is required for each loan application. Payslips may also be required depending on employment status and the application.</p>
+<p>
+<b>1. Application</b><br>
+Customers must provide accurate and complete information
+when applying for a loan.
+</p>
 
-<p><b>4. Approval</b><br>
-Submitting an application does not guarantee approval. Applications are subject to assessment and verification.</p>
+<p>
+<b>2. Verification</b><br>
+ATHANDWE LOANS may verify identity, income, banking
+information and supporting documents before making
+a lending decision.
+</p>
 
-<p><b>5. Fees and Interest</b><br>
-Applicable interest, initiation fees and service fees will be disclosed to the customer before the loan agreement is accepted.</p>
+<p>
+<b>3. Documents</b><br>
+A 3-month bank statement is compulsory for every
+loan application. Payslips may be required depending
+on employment status.
+</p>
 
-<p><b>6. False Information</b><br>
-Applications containing false, misleading or fraudulent information may be rejected.</p>
+<p>
+<b>4. Approval</b><br>
+Submitting an application does not guarantee approval.
+Applications are subject to assessment and verification.
+</p>
 
-<p><b>7. Repayment</b><br>
-Customers must repay the approved loan according to the agreed repayment schedule.</p>
+<p>
+<b>5. Fees and Interest</b><br>
+Applicable interest, initiation fees and service fees
+will be disclosed before the customer accepts the
+loan agreement.
+</p>
 
-<p><b>8. Privacy</b><br>
-Customer information must be handled securely and used for legitimate business and loan-processing purposes.</p>
+<p>
+<b>6. False Information</b><br>
+Applications containing false, misleading or fraudulent
+information may be rejected.
+</p>
 
-<p><b>9. Final Agreement</b><br>
-The signed loan agreement will contain the final applicable terms, amounts, fees, interest and repayment obligations.</p>
+<p>
+<b>7. Repayment</b><br>
+Customers must repay the approved loan according to
+the agreed repayment schedule.
+</p>
 
-<p class="small">These are general website terms and should be reviewed and adapted for your business and applicable South African laws before the system is used for real lending.</p>
+<p>
+<b>8. Privacy</b><br>
+Customer information must be handled securely and
+used only for legitimate loan-processing purposes.
+</p>
+
+<p>
+<b>9. Final Agreement</b><br>
+The final loan agreement will contain the applicable
+amounts, fees, interest and repayment obligations.
+</p>
+
+<p class="small">
+These website terms are general and should be reviewed
+and adapted for your business and applicable South
+African laws before real lending begins.
+</p>
+
 </div>
+
 </div>
+
 </section>
 
 </main>
 
 
 <footer>
+
 <div class="grid">
-<div>
-<h2 style="color:white">ATHANDWE LOANS</h2>
-<p>Simple • Convenient • Reliable</p>
-<p>Your Financial Partner for a Brighter Tomorrow.</p>
-</div>
 
 <div>
+
+<h2>ATHANDWE LOANS</h2>
+
+<p>Simple • Convenient • Reliable</p>
+
+<p>
+Your Financial Partner for a Brighter Tomorrow.
+</p>
+
+</div>
+
+
+<div>
+
 <h3>Quick Links</h3>
-<p>Home</p>
+
 <p>Create Profile</p>
 <p>Apply for Loan</p>
-<p>Loan Calculator</p>
+<p>Calculator</p>
 <p>Check Status</p>
 <p>Top Up</p>
+
 </div>
 
+
 <div>
+
 <h3>Contact Us</h3>
-<p>💬 WhatsApp: <span id="footerNumber"></span></p>
-<p>📍 South Africa</p>
-<p>🕐 Mon
+
+<p>
+💬 WhatsApp:
+<span id="footerNumber"></span>
+</p>
+
+<a id="whatsappFooter"
+class="btn red"
+target="_blank">
+💬 WhatsApp Us
+</a>
+
+</div>
+
+</div>
+
+<hr>
+
+<p>
+© 2026 ATHANDWE LOANS. All rights reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =====================================
+   ATHANDWE LOANS BUSINESS SETTINGS
+   Change this number later when you
+   receive your official business number.
+   ===================================== */
+
+const BUSINESS_WHATSAPP = "2782901056";
+
+
+/* CURRENT TEST FEES */
+
+let SETTINGS = {
+interest:10,
+initiation:0,
+service:0
+};
+
+
+/* NAVIGATION */
+
+function showPage(page){
+
+document.querySelectorAll(".page").forEach(function(p){
+p.classList.add("hidden");
+});
+
+document.getElementById(page).classList.remove("hidden");
+
+document.getElementById("mobileMenu").classList.add("hidden");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+function toggleMenu(){
+
+document.getElementById("mobileMenu")
+.classList.toggle("hidden");
+
+}
+
+
+/* WHATSAPP */
+
+document.getElementById("helpNumber").textContent="078 290 1056";
+
+document.getElementById("footerNumber").textContent="078 290 1056";
+
+const whatsappLink =
+"https://wa.me/"+BUSINESS_WHATSAPP+
+"?text="+encodeURIComponent(
+"Hello ATHANDWE LOANS, I need help."
+);
+
+document.getElementById("whatsappTop").href=whatsappLink;
+
+document.getElementById("whatsappFooter").href=whatsappLink;
+
+
+/* MESSAGE */
+
+function showMessage(id,text,type){
+
+const box=document.getElementById(id);
+
+box.className="message "+type;
+
+box.textContent=text;
+
+box.style.display="block";
+
+}
+
+
+/* EMAIL */
+
+function validEmail(email){
+
+return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+}
+
+
+/* SA ID VALIDATION */
+
+function validSAID(id){
+
+if(!/^\d{13}$/.test(id)){
+return false;
+}
+
+const month=parseInt(id.substring(2,4));
+
+const day=parseInt(id.substring(4,6));
+
+if(month<1 || month>12 || day<1 || day>31){
+return false;
+}
+
+let sum=0;
+
+for(let i=0;i<12;i++){
+
+let digit=parseInt(id.charAt(i));
+
+if(i%2===0){
+
+sum+=digit;
+
+}else{
+
+let doubled=digit*2;
+
+if(doubled>9){
+doubled-=9;
+}
+
+sum+=doubled;
+
+}
+
+}
+
+const check=(10-(sum%10))%10;
+
+return check===parseInt(id.charAt(12));
+
+}
+
+
+/* CREATE PROFILE */
+
+function createProfile(){
+
+let valid=true;
+
+const fields=[
+"name",
+"id",
+"dob",
+"phone",
+"email",
+"address"
+];
+
+fields.forEach(function(field){
+
+const el=document.getElementById(field);
+
+if(!el.value.trim()){
+
+el.classList.add("error");
+
+valid=false;
+
+}else{
+
+el.classList.remove("error");
+
+}
+
+});
+
+
+const email=document.getElementById("email");
+
+if(email.value && !validEmail(email.value)){
+
+email.classList.add("error");
+
+valid=false;
+
+}
+
+
+const id=document.getElementById("id");
+
+if(id.value && !validSAID(id.value)){
+
+id.classList.add("error");
+
+valid=false;
+
+}
+
+
+if(!valid){
+
+showMessage(
+"profileMsg",
+"Please complete the above information. Check the highlighted fields.",
+"danger"
+);
+
+return;
+
+}
+
+
+const profile={
+name:document.getElementById("name").value.trim(),
+id:id.value.trim(),
+dob:document.getElementById("dob").value,
+phone:document.getElementById("phone").value.trim(),
+email:email.value.trim(),
+address:document.getElementById("address").value.trim()
+};
+
+localStorage.setItem(
+"athandweProfile",
+JSON.stringify(profile)
+);
+
+
+showMessage(
+"profileMsg",
+"Profile created successfully. You can now continue with your loan application.",
+"success"
+);
+
+}
+
+
+/* EMPLOYMENT */
+
+function employmentChanged(){
+
+const employment=
+document.getElementById("employment").value;
+
+const star=
+document.getElementById("payslipStar");
+
+if(employment==="employed"){
+
+star.style.display="inline";
+
+}else{
+
+star.style.display="none";
+
+}
+
+}
+
+
+/* LOAN APPLICATION */
+
+function submitLoan(){
+
+let valid=true;
+
+const fields=[
+"loanAmount",
+"loanMonths",
+"employment",
+"bank",
+"accountType",
+"account",
+"statement",
+"proofAddress"
+];
+
+fields.forEach(function(id){
+
+const el=document.getElementById(id);
+
+if(!el.value){
+
+el.classList.add("error");
+
+valid=false;
+
+}else{
+
+el.classList.remove("error");
+
+}
+
+});
+
+
+const employment=
+document.getElementById("employment").value;
+
+const payslip=
+document.getElementById("payslip");
+
+if(
+employment==="employed" &&
+!payslip.files.length
+){
+
+payslip.classList.add("error");
+
+valid=false;
+
+}else{
+
+payslip.classList.remove("error");
+
+}
+
+
+const agree=
+document.getElementById("loanAgree");
+
+if(!agree.checked){
+
+valid=false;
+
+}
+
+
+if(!valid){
+
+showMessage(
+"loanMsg",
+"Please complete the above information and upload all required documents.",
+"danger"
+);
+
+return;
+
+}
+
+
+const reference=
+"AL-"+Date.now().toString().slice(-6);
+
+
+const application={
+
+reference:reference,
+
+amount:
+document.getElementById("loanAmount").value,
+
+months:
+document.getElementById("loanMonths").value,
+
+employment:employment,
+
+bank:
+document.getElementById("bank").value,
+
+accountType:
+document.getElementById("accountType").value,
+
+account:
+document.getElementById("account").value,
+
+status:"Pending",
+
+date:new Date().toLocaleDateString()
+
+};
+
+
+localStorage.setItem(
+"athandweApplication",
+JSON.stringify(application)
+);
+
+
+showMessage(
+"loanMsg",
+"Application submitted successfully. Your reference number is "+
+reference+
+". Status: Pending verification.",
+"success"
+);
+
+}
+
+
+/* CALCULATOR */
+
+function calculate(){
+
+const amount=
+parseFloat(
+document.getElementById("calcAmount").value
+)||0;
+
+const months=
+parseInt(
+document.getElementById("calcMonths").value
+)||1;
+
+
+const interest=
+amount*(SETTINGS.interest/100);
+
+const initiation=
+amount*(SETTINGS.initiation/100);
+
+const service=
+amount*(SETTINGS.service/100);
+
+const total=
+amount+interest+initiation+service;
+
+const monthly=
+total/months;
+
+
+document.getElementById("calcInterest")
+.textContent=SETTINGS.interest+"%";
+
+document.getElementById("calcInit")
+.textContent=SETTINGS.initiation+"%";
+
+document.getElementById("calcService")
+.textContent=SETTINGS.service+"%";
+
+document.getElementById("calcTotal")
+.textContent="R"+total.toFixed(2);
+
+document.getElementById("calcMonthly")
+.textContent="R"+monthly.toFixed(2);
+
+}
+
+
+/* STATUS */
+
+function checkStatus(){
+
+const ref=
+document.getElementById("statusRef")
+.value.trim();
+
+const phone=
+document.getElementById("statusPhone")
+.value.trim();
+
+
+if(!ref || !phone){
+
+showMessage(
+"statusResult",
+"Please enter your application reference number and cellphone number.",
+"danger"
+);
+
+return;
+
+}
+
+
+const app=JSON.parse(
+localStorage.getItem("athandweApplication")||"null"
+);
+
+
+if(app && app.reference===ref){
+
+showMessage(
+"statusResult",
+"Application "+app.reference+
+" | Amount: R"+app.amount+
+" | Status: "+app.status+
+" | Submitted: "+app.date,
+"success"
+);
+
+}else{
+
+showMessage(
+"statusResult",
+"No application was found with those details.",
+"danger"
+);
+
+}
+
+}
+
+
+/* TOP UP */
+
+function submitTopup(){
+
+const ref=
+document.getElementById("topRef");
+
+const phone=
+document.getElementById("topPhone");
+
+const amount=
+document.getElementById("topAmount");
+
+let valid=true;
+
+
+[ref,phone,amount].forEach(function(el){
+
+if(!el.value.trim()){
+
+el.classList.add("error");
+
+valid=false;
+
+}else{
+
+el.classList.remove("error");
+
+}
+
+});
+
+
+if(!valid){
+
+showMessage(
+"topupMsg",
+"Please complete the above information.",
+"danger"
+);
+
+return;
+
+}
+
+
+showMessage(
+"topupMsg",
+"Your top-up request has been submitted for assessment.",
+"success"
+);
+
+}
+
+</script>
+
+</body>
+</html>
