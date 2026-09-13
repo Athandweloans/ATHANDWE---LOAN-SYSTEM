@@ -1298,7 +1298,9 @@ const fields=[
 "dob",
 "phone",
 "email",
-"address"
+"address", 
+"pin", 
+"confirmPin" 
 ];
 
 fields.forEach(function(field){
@@ -1341,7 +1343,19 @@ valid=false;
 
 }
 
+const pin=document.getElementById("pin");
+const confirmPin=document.getElementById("confirmPin");
 
+if(pin.value!==confirmPin.value){
+  pin.classList.add("error");
+  confirmPin.classList.add("error");
+  showMessage(
+    "profileMsg",
+    "PIN and Confirm PIN do not match.",
+    "danger"
+  );
+  return;
+}
 if(!valid){
 
 showMessage(
@@ -1361,7 +1375,8 @@ id:id.value.trim(),
 dob:document.getElementById("dob").value,
 phone:document.getElementById("phone").value.trim(),
 email:email.value.trim(),
-address:document.getElementById("address").value.trim()
+address:document.getElementById("address").value.trim(), 
+pin:pin.value
 };
 
 localStorage.setItem(
