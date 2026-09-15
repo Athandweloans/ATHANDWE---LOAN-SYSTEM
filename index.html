@@ -447,7 +447,7 @@ display:none!important;
 <button onclick="showPage('home')">🏠<br>Home</button>
 
 <button onclick="showPage('profile')">👤<br>Create Profile</button>
-
+<button onclick="showPage('login')">🔐<br>Login</button>
 <button onclick="showPage('loan')">📄<br>Apply for Loan</button>
 
 <button onclick="showPage('calculator')">🧮<br>Calculator</button>
@@ -652,7 +652,131 @@ View Terms
 
 </section>
 
+<!-- LOGIN -->
 
+<section id="login" class="page hidden">
+
+<div class="container">
+
+<div class="card">
+
+<h2>🔐 ATHANDWE LOANS LOGIN</h2>
+
+<p>
+Login using your cellphone number or email address and your 6-digit PIN.
+</p>
+
+<div id="loginMsg" class="message"></div>
+
+<label>
+Cellphone Number or Email Address
+<span class="required">*</span>
+</label>
+
+<input
+id="loginIdentifier"
+placeholder="Enter cellphone number or email">
+
+<label>
+PIN
+<span class="required">*</span>
+</label>
+
+<input
+id="loginPin"
+type="password"
+inputmode="numeric"
+maxlength="6"
+placeholder="Enter your 6-digit PIN">
+
+<button class="btn red" onclick="loginCustomer()">
+Login
+</button>
+
+<button class="btn white" onclick="showPage('forgotPin')">
+Forgot PIN?
+</button>
+
+<p>
+Don't have an account?
+<button class="btn white" onclick="showPage('profile')">
+Create Profile
+</button>
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- FORGOT PIN -->
+
+<section id="forgotPin" class="page hidden">
+
+<div class="container">
+
+<div class="card">
+
+<h2>🔑 Forgot PIN</h2>
+
+<p>
+Enter the email address you used when creating your ATHANDWE LOANS profile.
+</p>
+
+<div id="forgotPinMsg" class="message"></div>
+
+<label>
+Email Address <span class="required">*</span>
+</label>
+
+<input
+id="resetEmail"
+type="email"
+placeholder="Enter your registered email">
+
+<button class="btn red" onclick="startPinReset()">
+Continue
+</button>
+
+<button class="btn white" onclick="showPage('login')">
+Back to Login
+</button>
+
+<div id="resetPinArea" class="hidden">
+
+<label>
+New 6-Digit PIN <span class="required">*</span>
+</label>
+
+<input
+id="newPin"
+type="password"
+inputmode="numeric"
+maxlength="6"
+placeholder="Create a new PIN">
+
+<label>
+Confirm New PIN <span class="required">*</span>
+</label>
+
+<input
+id="newConfirmPin"
+type="password"
+inputmode="numeric"
+maxlength="6"
+placeholder="Re-enter your new PIN">
+
+<button class="btn red" onclick="resetCustomerPin()">
+Create New PIN
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
 <!-- CREATE PROFILE -->
 
 <section id="profile" class="page hidden">
@@ -1298,6 +1422,19 @@ return check===parseInt(id.charAt(12));
 
 function createProfile(){
 
+if(localStorage.getItem("athandweProfile")){
+
+showMessage(
+"profileMsg",
+"A profile already exists. Please login instead.",
+"danger"
+);
+
+showPage("login");
+
+return;
+
+}
 let valid=true;
 
 const fields=[
@@ -1717,6 +1854,207 @@ showMessage(
 
 }
 
+/* CUSTOMER LOGIN */
+
+function loginCustomer(){
+
+const identifier =
+document.getElementById("loginIdentifier").value.trim();
+
+const pin =
+document.getElementById("loginPin").value.trim();
+
+if(!identifier || !pin){
+
+showMessage(
+"loginMsg",
+"Please enter your cellphone/email and PIN.",
+"danger"
+);
+
+return;
+}
+
+const profile =
+JSON.parse(
+localStorage.getItem("athandweProfile") || "null"
+);
+
+if(!profile){
+
+showMessage(
+"loginMsg",
+"No profile was found. Please create a profile first.",
+"danger"
+);
+
+return;
+}
+
+const identifierMatches =
+identifier.toLowerCase() === profile.email.toLowerCase()
+||
+identifier === profile.phone;
+
+if(!identifierMatches){
+
+showMessage(
+"loginMsg",
+"Incorrect cellphone/email or PIN.",
+"danger"
+);
+
+return;
+}
+
+if(pin !== profile.pin){
+
+showMessage(
+"loginMsg",
+"Incorrect PIN. If you forgot your PIN, press Forgot PIN.",
+"danger"
+);
+
+return;
+}
+
+localStorage.setItem(
+"athandweLoggedIn",
+"true"
+);
+
+showMessage(
+"loginMsg",
+"Login successful. Welcome back, " + profile.name + ".",
+"success"
+);
+
+setTimeout(function(){
+
+showPage("loan");
+
+},800);
+
+}
+
+
+/* FORGOT PIN */
+
+function startPinReset(){
+
+const email =
+document.getElementById("resetEmail").value.trim().toLowerCase();
+
+const profile =
+JSON.parse(
+localStorage.getItem("athandweProfile") || "null"
+);
+
+if(!email){
+
+showMessage(
+"forgotPinMsg",
+"Please enter your registered email address.",
+"danger"
+);
+
+return;
+}
+
+if(!profile || email !== profile.email.toLowerCase()){
+
+showMessage(
+"forgotPinMsg",
+"This email address does not match the profile.",
+"danger"
+);
+
+return;
+}
+
+document.getElementById("resetPinArea")
+.classList.remove("hidden");
+
+showMessage(
+"forgotPinMsg",
+"Email address matched. Please create your new 6-digit PIN.",
+"success"
+);
+
+}
+
+
+/* CREATE NEW PIN */
+
+function resetCustomerPin(){
+
+const newPin =
+document.getElementById("newPin").value.trim();
+
+const confirmPin =
+document.getElementById("newConfirmPin").value.trim();
+
+const profile =
+JSON.parse(
+localStorage.getItem("athandweProfile") || "null"
+);
+
+if(!profile){
+
+showMessage(
+"forgotPinMsg",
+"No profile was found.",
+"danger"
+);
+
+return;
+}
+
+if(!/^\d{6}$/.test(newPin)){
+
+showMessage(
+"forgotPinMsg",
+"Your new PIN must contain exactly 6 digits.",
+"danger"
+);
+
+return;
+}
+
+if(newPin !== confirmPin){
+
+showMessage(
+"forgotPinMsg",
+"New PIN and Confirm PIN do not match.",
+"danger"
+);
+
+return;
+}
+
+profile.pin = newPin;
+
+localStorage.setItem(
+"athandweProfile",
+JSON.stringify(profile)
+);
+
+showMessage(
+"forgotPinMsg",
+"Your PIN has been changed successfully. You can now login with your new PIN.",
+"success"
+);
+
+document.getElementById("newPin").value = "";
+document.getElementById("newConfirmPin").value = "";
+
+setTimeout(function(){
+
+showPage("login");
+
+},1200);
+
+}
 </script>
 
 </body>
